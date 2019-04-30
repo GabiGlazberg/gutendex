@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  backend:
+    image: backend
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "db"
+
+    environment: 
+      - POSTGRES_PASSWORD=gutendex
+      - POSTGRES_DB=gutendex
+      - POSTGRES_USER=postgres
+
+  db:
+    image: postgres
+    environment: 
+      - POSTGRES_PASSWORD=gutendex
+      - POSTGRES_DB=gutendex
+      - POSTGRES_USER=postgres
